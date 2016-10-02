@@ -46,7 +46,8 @@ app.get('/user/:user/password/:password', function(req, res){
       } else {
           foundUser = rows.length;
           if (foundUser == 1) {
-              res.send(JSON.stringify(rows[0]));
+              // res.send(JSON.stringify(rows[0]));
+              res.json(rows[0]);
           } else {
               console.log('Could not find user with credentials: user=' + user + ' password=' + password);
               res.status(404).send('Not found');
@@ -83,7 +84,8 @@ app.get('/hammocks', function(req, res){
         if (err) {
             console.log('Error: ' + err);
         } else {
-            res.send(JSON.stringify(rows));
+            //res.send(JSON.stringify(rows));
+            res.json(rows);
         }
     });
 
