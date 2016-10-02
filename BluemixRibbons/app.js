@@ -118,7 +118,8 @@ app.post('/hammocks', function(req, res){
 // });
 
 // connect to DB
-var connection = mysql.createConnection({
+var connection = mysql.createPool({
+    connectionLimit : 10,
     host: mysqlCreds.host,
     port: mysqlCreds.port,
     user: mysqlCreds.user,  // not user
@@ -126,14 +127,12 @@ var connection = mysql.createConnection({
     database: mysqlCreds.name,
 });
 
-connection.connect(function(){
-    // start server on the specified port and binding host
-    app.listen(appEnv.port, '0.0.0.0', function() {
+//connection.connect(function(){
+// start server on the specified port and binding host
+app.listen(appEnv.port, '0.0.0.0', function() {
 
-      // print a message when the server starts listening
-      console.log("server starting on " + appEnv.url);
-    });
-
-
-    //connection.end();
+  // print a message when the server starts listening
+  console.log("server starting on " + appEnv.url);
 });
+
+//});
