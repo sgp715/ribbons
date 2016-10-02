@@ -46,7 +46,11 @@ app.get('/user/:user/password/:password', function(req, res){
       } else {
           foundUser = rows.length;
           if (foundUser == 1) {
-              res.send(JSON.stringify(rows[0]));
+              // res.send(JSON.stringify(rows[0]));
+              res.set('Content-Type', 'application/json');
+              res.set('Access-Control-Allow-Origin', '*');
+              res.set('Content-Type', '["GET"]');
+              res.json(rows[0]);
           } else {
               console.log('Could not find user with credentials: user=' + user + ' password=' + password);
               res.status(404).send('Not found');
@@ -82,8 +86,13 @@ app.get('/hammocks', function(req, res){
     connection.query(query, function(err, rows, fields) {
         if (err) {
             console.log('Error: ' + err);
+            res.status(404).send('Not found');
         } else {
-            res.send(JSON.stringify(rows));
+            //res.send(JSON.stringify(rows));
+            res.set('Content-Type', 'application/json');
+            res.set('Access-Control-Allow-Origin', '*');
+            res.set('Content-Type', '["GET"]');
+            res.json(rows);
         }
     });
 
