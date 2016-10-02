@@ -12,7 +12,7 @@ import {
   View
 } from 'react-native';
 
-class ReactRibbons extends Component {
+class gents extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -20,7 +20,7 @@ class ReactRibbons extends Component {
           Welcome to React Native!
         </Text>
         <Text style={styles.instructions}>
-          Hey penis. To get started, edit index.ios.js
+          To get started, edit index.ios.js
         </Text>
         <Text style={styles.instructions}>
           Press Cmd+R to reload,{'\n'}
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('ReactRibbons', () => ReactRibbons);
+AppRegistry.registerComponent('gents', () => gents);
