@@ -46,6 +46,7 @@ app.get('/user/:user/password/:password', function(req, res){
       } else {
           foundUser = rows.length;
           if (foundUser == 1) {
+              res.set('Access-Control-Allow-Origin', '*');
               res.set('Access-Control-Allow-Methods', '["GET"]');
               res.json(rows[0]);
           } else {
@@ -72,8 +73,8 @@ app.post('/user', function(req, res){
             res.status(404).send('Not found');
         }
 
-        // res.set('Access-Control-Allow-Origin', '*');
-        // res.set('Access-Control-Allow-Methods', '["POST"]');
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set('Access-Control-Allow-Methods', '["POST"]');
         res.status(200).send();
     })
 
@@ -116,8 +117,8 @@ app.post('/hammocks', function(req, res){
             res.status(404).send('Not found');
         }
 
-        // res.set('Access-Control-Allow-Origin', '*');
-        // res.set('Access-Control-Allow-Methods', '["POST"]');
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set('Access-Control-Allow-Methods', '["POST"]');
         res.status(200).send();
     })
 });
