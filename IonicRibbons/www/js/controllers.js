@@ -20,26 +20,22 @@ function ($scope, $stateParams, $location) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $location, $http) {
 
-
-
-  $scope.user = '';
-  $scope.password = '';
-
   $scope.login= function() {
-  //   // send request and verify against DB
-  //   console.log($scope.user);
-  //   console.log($scope.password);
 
-    $http.get('https://bluemixribbons.mybluemix.net/hammocks')
+    var user = $scope.user;
+    var password = $scope.password;
+
+    $http.get('https://bluemixribbons.mybluemix.net/user/'+user+'/password/'+password)
+    // $http.get('https://bluemixribbons.mybluemix.net/hammocks')
     .success(function(res){
-      console.log("Successful!");
       console.log(res);
+      $location.path('/list');
     }).error(function(res, status){
       console.log("Not Successful :(");
       console.log(res);
     });
 
-    // $location.path('/list');
+    //
   };
 
   // $http.jsonp('https://bluemixribbons.mybluemix.net/hammocks')
